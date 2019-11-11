@@ -39,6 +39,7 @@ public class RestTest{
         String endpoint="/api/users";
         String requestBody="{\"name\": \"morpheus\",\"job\": \"leader\"}";
         HttpResponse response = HttpClientHelper.post(URL+endpoint,requestBody);
+
         int statusCode = response.getStatusLine().getStatusCode();
         System.out.println("Response Code : " + statusCode);
         Assert.assertEquals("Response status code should be 201", 201, statusCode);

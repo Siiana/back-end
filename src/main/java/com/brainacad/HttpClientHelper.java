@@ -1,5 +1,6 @@
 package com.brainacad;
 
+import io.qameta.allure.Step;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 import static org.apache.http.protocol.HTTP.USER_AGENT;
 
+
 public class HttpClientHelper {
 
     private static Map<String, String> headers = new HashMap<>();
@@ -22,6 +24,7 @@ public class HttpClientHelper {
     }
 
     //REST GET запрос
+    @Step
      public static HttpResponse get(String endpointUrl, String parameters) throws IOException {
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(endpointUrl + "?" + parameters);
@@ -33,6 +36,7 @@ public class HttpClientHelper {
     }
 
     //REST POST запрос
+    @Step
     public static HttpResponse post(String endpointUrl, String body) throws IOException {
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(endpointUrl);
@@ -45,6 +49,7 @@ public class HttpClientHelper {
     }
 
     //REST PUT запрос
+    @Step
     public static HttpResponse put(String endpointUrl, String body) throws IOException {
         HttpClient client = HttpClientBuilder.create().build();
         HttpPut put = new HttpPut(endpointUrl);
@@ -57,6 +62,7 @@ public class HttpClientHelper {
     }
 
     //REST PATCH запрос
+    @Step
     public static HttpResponse patch(String endpointUrl, String body) throws IOException {
         HttpClient client = HttpClientBuilder.create().build();
         HttpPatch patch = new HttpPatch(endpointUrl);
@@ -69,6 +75,7 @@ public class HttpClientHelper {
     }
 
     //REST DELETE запрос
+    @Step
     public static HttpResponse delete(String endpointUrl) throws IOException {
         HttpClient client = HttpClientBuilder.create().build();
         HttpDelete delete = new HttpDelete(endpointUrl);
@@ -81,7 +88,7 @@ public class HttpClientHelper {
 
 
 
-
+    @Step("test 2 {0}")
     public static String getBodyFromResponse(HttpResponse response) throws IOException {
         //создаём ридер буффера и передаём в него входящий поток респонса
         BufferedReader rd = new BufferedReader(
